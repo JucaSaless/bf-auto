@@ -8,9 +8,6 @@ var expressValidator = require('express-validator');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 const db = require('./db');
 
 var app = express();
@@ -25,6 +22,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Set global errors variable
+app.locals.errors = null;
+
+// Body Parser middleware
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}));
 // parse application/json
@@ -81,8 +82,14 @@ app.use(function (req, res, next) {
 });
 
 // Set routers
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//var indexRouter = require('./routes/index');
+//var usersRouter = require('./routes/users');
+var pagesRouter = require('./routes/pages');
+var adminPagesRouter = require('./routes/admin_pages');
+
+app.use('/admin/pages', adminPagesRouter);
+app.use('/', pagesRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
