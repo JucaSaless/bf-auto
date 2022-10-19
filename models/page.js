@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 
-// Page Schema
 var PageSchema = mongoose.Schema({
    
     title: {

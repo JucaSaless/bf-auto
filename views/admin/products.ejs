@@ -1,0 +1,45 @@
+<%- include('../_layouts/adminheader') %>
+
+<h2 class="page-title">Produtos</h2>
+<a href="/admin/products/add-product" class="btn btn-primary">Adicionar</a>
+<br><br>
+
+<% if (count > 0) { %>
+
+<table class="table table-striped alignmiddle">
+
+    <thead>
+        <tr class="home">
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Categoria</th>
+            <th>Imagem</th>
+            <th>Editar</th>
+            <th>Deletar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% products.forEach(function(product){ %>
+        <tr>
+            <td><%= product.title %></td>
+            <td>$<%= parseFloat(product.price).toFixed(2) %></td>
+            <td><%= product.category %></td>
+            <td>
+                <% if (product.image == "") { %>
+                <img id="noimage" src="/images/noimage.png">
+                <% } else {%>
+                <img id="noimage" src="/product_images/<%= product._id %>/<%= product.image %>">
+                <% }%>
+            </td>
+            <td><a href="/admin/products/edit-product/<%= product._id %>">Editar</a></td>
+            <td><a class="confirmDeletion" href="/admin/products/delete-product/<%= product._id %>">Deletar</a></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<% } else {%>
+<h3 class="text-center">Nenhum produto cadastrado.</h3>
+<% }%>
+
+<%- include('../_layouts/adminfooter') %>
