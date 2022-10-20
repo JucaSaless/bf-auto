@@ -2,7 +2,7 @@ exports.isUser = function(req, res, next) {
     if (req.isAuthenticated()) {
         next();
     } else {
-        req.flash('danger', 'Please log in.');
+        req.flash('danger', 'É preciso estar logado para acessar.');
         res.redirect('/users/login');
     }
 }

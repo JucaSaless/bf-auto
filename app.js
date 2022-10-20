@@ -118,7 +118,6 @@ app.get('*', function(req,res,next) {
  });
 
 // Set routers
-//var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var pagesRouter = require('./routes/pages');
 var productsRouter = require('./routes/products.js');
