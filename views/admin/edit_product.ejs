@@ -35,7 +35,7 @@
     </div>
     
     <div class="form-group">
-        <label for="">Current Image</label>
+        <label for="">Imagem</label>
         <p>
             <% if (image == "") { %>
             <img id="noimage" src="/images/noimage.png" alt="">
@@ -46,17 +46,17 @@
     </div>
     
     <div class="form-group">
-        <label for="">Upload Image</label>
+        <label for="">Carregar Imagem</label>
         <input type="file" class="form-control" name="image" id="img">
         <img src="#" id="imgPreview" alt="">
     </div>
     
     <input type="hidden" name="pimage" value="<%= image %>">
-    <button class="btn btn-default">Submit</button>
+    <button class="btn btn-default">Salvar</button>
 </form>
 
 <hr>
-<h3 class="page-header">Galeria</h3>
+<h3 class="page-header">Galeria de Imagens</h3>
 
 <ul class="gallery">
     <% galleryImages.forEach(function(image){ %>

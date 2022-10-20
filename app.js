@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const expressValidator = require('express-validator');
 const fileUpload = require('express-fileupload');
-//var passport = require('passport');
+const passport = require('passport');
 
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -26,6 +26,32 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Set global errors variable
 app.locals.errors = null;
+
+// Get Page Model
+var Page = require('./models/page');
+
+// Get all pages to pass to header.ejs
+Page.find({}).sort({ sorting: 1 }).exec(function (err, pages) {
+    if (err) {
+        console.log(err);
+    } else {
+        app.locals.pages = pages;
+    }
+});
+
+
+// Get Category Model
+var Category = require('./models/category');
+
+// Get all categories to pass to header.ejs
+Category.find(function (err, categories) {
+    if (err) {
+        console.log(err);
+    } else {
+        app.locals.categories = categories;
+    }
+});
+
 
 // Express fileUpload middleware
 app.use(fileUpload());
@@ -79,10 +105,23 @@ app.use(function (req, res, next) {
     next();
 });
 
+// Passport Config
+require('./config/passport')(passport);
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('*', function(req,res,next) {
+    //res.locals.cart = req.session.cart;
+    res.locals.user = req.user || null;
+    next();
+ });
+
 // Set routers
 //var indexRouter = require('./routes/index');
-//var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/users');
 var pagesRouter = require('./routes/pages');
+var productsRouter = require('./routes/products.js');
 var adminPagesRouter = require('./routes/admin_pages');
 var adminCategories = require('./routes/admin_categories.js');
 var adminProducts = require('./routes/admin_products.js');
@@ -90,6 +129,8 @@ var adminProducts = require('./routes/admin_products.js');
 app.use('/admin/pages', adminPagesRouter);
 app.use('/admin/categories', adminCategories);
 app.use('/admin/products', adminProducts);
+app.use('/products', productsRouter);
+app.use('/users', usersRouter);
 app.use('/', pagesRouter);
 
 

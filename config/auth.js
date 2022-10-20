@@ -8,10 +8,10 @@ exports.isUser = function(req, res, next) {
 }
 
 exports.isAdmin = function(req, res, next) {
-    if (req.isAuthenticated() && res.locals.user.admin == 1) {
+    if (req.isAuthenticated() && res.locals.user.admin == 0) {
         next();
     } else {
-        req.flash('danger', 'Please log in as admin.');
+        req.flash('danger', 'Acesso somente para administradores.');
         res.redirect('/users/login');
     }
 }
