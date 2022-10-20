@@ -48,20 +48,15 @@ router.post('/add-product', function (req, res) {
 
     var imageFile = "";
     if (req.files !== null && req.files.image !== "undefined") {
-        console.log('entrou');
         imageFile = req.files.image.name;
     }
 
     //var imageFile = (typeof req.files !== 'null' || typeof req.files.image !== "undefined") ? req.files.image.name : "";
 
-    console.log('add-produt \n', imageFile);
-
     req.checkBody('title', 'Informe um título.').notEmpty();
     req.checkBody('desc', 'Informe uma descrição.').notEmpty();
     req.checkBody('price', 'Informe um preço.').isDecimal();
-    //req.checkBody('image', 'Informe alguma imagem.').isImage(imageFile);
-
-    console.log('passou');
+    req.checkBody('image', 'Informe uma imagem.').isImage(imageFile);
 
     var title = req.body.title;
     var slug = title.replace(/\s+/g, '-').toLowerCase();
@@ -193,7 +188,7 @@ router.post('/edit-product/:id', function (req, res) {
     req.checkBody('title', 'Informe um título.').notEmpty();
     req.checkBody('desc', 'Informe uma descrição.').notEmpty();
     req.checkBody('price', 'Informe um preço.').isDecimal();
-    req.checkBody('image', 'Informe alguma imagem.').isImage(imageFile);
+    req.checkBody('image', 'Informe uma imagem.').isImage(imageFile);
 
     var title = req.body.title;
     var slug = title.replace(/\s+/g, '-').toLowerCase();

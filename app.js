@@ -1,10 +1,10 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var bodyParser = require('body-parser');
-var session = require('express-session');
-var expressValidator = require('express-validator');
-var fileUpload = require('express-fileupload');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const expressValidator = require('express-validator');
+const fileUpload = require('express-fileupload');
 //var passport = require('passport');
 
 var cookieParser = require('cookie-parser');
@@ -30,21 +30,8 @@ app.locals.errors = null;
 // Express fileUpload middleware
 app.use(fileUpload());
 
-// var Page = require('./models/page');
-
-// // Get all pages to pass to header.ejs
-// Page.find({}).sort({sorting: 1}).exec(function (err, pages) {
-//     if (err) {
-//         console.log(err);
-//     } else {
-//         app.locals.pages = pages;
-//     }
-// });
-
 // Body Parser middleware
-// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
-// parse application/json
 app.use(bodyParser.json());
 
 // Express Session middleware
@@ -99,7 +86,6 @@ var pagesRouter = require('./routes/pages');
 var adminPagesRouter = require('./routes/admin_pages');
 var adminCategories = require('./routes/admin_categories.js');
 var adminProducts = require('./routes/admin_products.js');
-
 
 app.use('/admin/pages', adminPagesRouter);
 app.use('/admin/categories', adminCategories);
