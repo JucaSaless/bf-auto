@@ -2,13 +2,30 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var bcrypt = require('bcryptjs');
+var auth = require('../config/auth');
+var isAdmin = auth.isAdmin;
 
 var User = require('../models/user');
+const user = require('../models/user');
+
+router.get('/', isAdmin, function (req, res) {
+
+    User.find(function (err, users) {
+        if (err)
+            console.log(err);
+
+        res.render('admin/users', {
+            title: 'Usuários',
+            users: users
+        });
+    });
+
+});
 
 router.get('/register', function (req, res) {
 
-    res.render('register', {
-        title: 'Registro'
+    res.render('admin/register', {
+        title: 'Usuário'
     });
 
 });
@@ -26,10 +43,10 @@ router.post('/register', function (req, res) {
     var errors = req.validationErrors();
 
     if (errors) {
-        res.render('register', {
+        res.render('admin/register', {
             errors: errors,
             user: null,
-            title: 'Registro'
+            title: 'Usuário'
         });
     } else {
         User.findOne({ username: username }, function (err, user) {
@@ -43,7 +60,7 @@ router.post('/register', function (req, res) {
                 var user = new User({
                     username: username,
                     password: password,
-                    admin: 0
+                    admin: isAdmin ? 1 : 0
                 });
 
                 bcrypt.genSalt(10, function (err, salt) {
@@ -57,8 +74,8 @@ router.post('/register', function (req, res) {
                             if (err) {
                                 console.log(err);
                             } else {
-                                req.flash('success', 'Registrado com sucesso!');
-                                res.redirect('/users/login')
+                                req.flash('success', 'Cadastrado com sucesso!');
+                                res.redirect('/users')
                             }
                         });
                     });
@@ -91,6 +108,7 @@ router.post('/login', function (req, res, next) {
 
 });
 
+
 router.get('/logout', function (req, res) {
 
     req.logout(function (err) {
@@ -99,5 +117,25 @@ router.get('/logout', function (req, res) {
     });
 
 });
+
+
+router.get('/delete-user/:id', isAdmin, function (req, res) {
+    User.findByIdAndRemove(req.params.id, function (err) {
+        if (err)
+            return console.log(err);
+
+        User.find(function (err, users) {
+            if (err) {
+                console.log(err);
+            } else {
+                req.app.locals.users = users;
+            }
+        });
+
+        req.flash('success', 'Usuário deletado!');
+        res.redirect('/users');
+    });
+});
+
 
 module.exports = router;

@@ -15,4 +15,24 @@
     
 </div>
 
+<!-- <div class="row products">
+
+    <% products.forEach(function(p){ %>
+        <div class="col-xs-12 col-md-4 p">
+            <div class="card" style="width: 18rem;">
+                <a class="card-img-top" href="/products/<%= p.category %>/<%= p.slug %>">
+                    <img class="pimage" src="/product_images/<%= p.id %>/<%= p.image %>" alt="">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title"><%= p.title %></h5>
+                    <p class="card-text">R$ <%= parseFloat(p.price).toFixed(2) %></p>
+                    <a href="/products/<%= p.category %>/<%= p.slug %>" class="btn btn-primary">Detalhes</a>
+                </div>
+            </div>
+</div>
+  <% }); %>
+
+</div> -->
+
 <% include _layouts/footer %>
+
