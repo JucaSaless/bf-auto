@@ -39,7 +39,6 @@ Page.find({}).sort({ sorting: 1 }).exec(function (err, pages) {
     }
 });
 
-
 // Get Category Model
 var Category = require('./models/category');
 
@@ -120,10 +119,10 @@ app.get('*', function(req,res,next) {
 // Set routers
 var usersRouter = require('./routes/users');
 var pagesRouter = require('./routes/pages');
-var productsRouter = require('./routes/products.js');
+var productsRouter = require('./routes/products');
 var adminPagesRouter = require('./routes/admin_pages');
-var adminCategories = require('./routes/admin_categories.js');
-var adminProducts = require('./routes/admin_products.js');
+var adminCategories = require('./routes/admin_categories');
+var adminProducts = require('./routes/admin_products');
 
 app.use('/admin/pages', adminPagesRouter);
 app.use('/admin/categories', adminCategories);

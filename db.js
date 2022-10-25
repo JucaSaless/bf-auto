@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-//mongoose.connect("mongodb://localhost:27017/db_bfauto");
-mongoose.connect("mongodb+srv://admin:2yFJn4r7l5ocdAQZ@cluster0.b3xo2sz.mongodb.net/?retryWrites=true&w=majority");
+mongoose.connect("mongodb://localhost:27017/db_bfauto");
+//mongoose.connect("mongodb+srv://admin:2yFJn4r7l5ocdAQZ@cluster0.b3xo2sz.mongodb.net/?retryWrites=true&w=majority");
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {

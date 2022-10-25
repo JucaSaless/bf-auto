@@ -18,11 +18,11 @@
         <tr id="id_<%= page._id %>" class="<%= page.slug %>">
             <td><%= page.title %></td>
             <td><a href="/admin/pages/edit-page/<%= page._id %>">Editar</a></td>
-            <% if (page.slug == "home") { %>
+            <td><a class="confirmDeletion" href="/admin/pages/delete-page/<%= page._id %>">Deletar</a></td>
+            <!-- <% if (page.slug == "home") { %>
             <td></td>
             <% }  else {%>
-            <td><a class="confirmDeletion" href="/admin/pages/delete-page/<%= page._id %>">Deletar</a></td>
-            <% }%>
+            <% }%> -->
         </tr>
         <% }); %>
     </tbody>
