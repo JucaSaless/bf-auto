@@ -21,14 +21,19 @@
                 </div>
                 
                 <div class="social">
-                    <a href="https://wa.me/+555481347604" target="_blank" >
-                        (54) 998134-7604<img alt="" style="width: 28px; margin: 5px;" src="/images/whatsapp-branco.png" />
+                    <% if (!user) { %>
+                    <a href="/users/login">
+                        <img alt="" style="width: 24px; margin: 5px;" src="/images/config-icon.png" />
+                    </a>
+                    <% } %>
+                    <a href="https://www.instagram.com/_bf_automoveis__" target="_blank">
+                        <img alt="" style="width: 24px; margin: 5px;" src="/images/instagram.png" />
                     </a>
                     <a href="https://wa.me/+555499937056" target="_blank">
-                        (54) 99993-7056<img alt="" style="width: 28px; margin: 5px;" src="/images/whatsapp-branco.png" />
+                        Leandro (54)99993-7056<img alt="" style="width: 28px; margin: 5px;" src="/images/whatsapp-branco.png" />
                     </a>
-                    <a href="https://www.instagram.com/_bf_automoveis__" target="_blank">
-                        <img alt="" style="width: 27px; margin: 5px;" src="/images/instagram.png" />
+                    <a href="https://wa.me/+555481347604" target="_blank" >
+                        Samuel (54)998134-7604<img alt="" style="width: 28px; margin: 5px;" src="/images/whatsapp-branco.png" />
                     </a>
                 </div>
                 
@@ -45,9 +50,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <% if (user) { %>
                             <li><a href="/users/logout">Olá, <%= user.username %> (sair)</a></li>
-                        <% } else {%>
-                            <li><a href="/users/login">Entrar</a></li>
                         <% } %>
+                            
                         <% if (user && user.admin == 0) { %>
                             <li><a href="/admin/pages">Área Admin</a></li>
                         <% }%>

@@ -15,13 +15,16 @@ router.get('/', isAdmin, function (req, res) {
 
     Product.count(function (err, c) {
         count = c;
-    });
+        
+        if(count == 0) return;
 
-    Product.find(function (err, products) {
-        res.render('admin/products', {
-            products: products,
-            count: count
+        Product.find(function (err, products) {
+            res.render('admin/products', {
+                products: products,
+                count: count
+            });
         });
+
     });
 });
 
