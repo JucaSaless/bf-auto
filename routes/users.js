@@ -60,7 +60,8 @@ router.post('/register', function (req, res) {
                 var user = new User({
                     username: username,
                     password: password,
-                    admin: isAdmin ? 1 : 0
+                    //admin: isAdmin ? 1 : 0
+                    admin: 0
                 });
 
                 bcrypt.genSalt(10, function (err, salt) {
@@ -109,13 +110,10 @@ router.post('/login', function (req, res, next) {
 });
 
 
-router.get('/logout', function (req, res) {
-
-    req.logout(function (err) {
-        req.flash('success', 'Saiu!');
-        res.redirect('/users/login');
-    });
-
+router.get('/logout', function (req, res) { 
+    req.logOut();
+    req.flash('success', 'Saiu!');
+    res.redirect('/users/login');
 });
 
 

@@ -1,11 +1,27 @@
 .img-logo {
-  width: 310px;
+  width: 320px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
+.img-logo-footer {
+  width: 250px;
+}
+
 #nav-bar {
   padding-top: 60px;
+}
+
+.infos-head {
+  color: white;
+  display: inline;
+  float: right;
+  margin-top: 3px;
+}
+
+.infos-footer {
+  display: inline;
+  float: right;
 }
 
 .social a {

@@ -5,7 +5,6 @@ var auth = require('../config/auth');
 var isUser = auth.isUser;
 
 var Product = require('../models/product');
-
 var Category = require('../models/category');
 
 router.get('/', function (req, res) {

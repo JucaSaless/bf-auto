@@ -6,6 +6,7 @@ var Page = require('../models/page');
 
 router.get('/', function (req, res) {
     
+    //alteração temporariria
     res.redirect('/products');
    
 });

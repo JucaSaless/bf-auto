@@ -11,20 +11,14 @@ var Product = require('../models/product');
 var Category = require('../models/category');
 
 router.get('/', isAdmin, function (req, res) {
-    var count;
 
     Product.count(function (err, c) {
-        count = c;
-        
-        //if(count == 0) return;
-
         Product.find(function (err, products) {
             res.render('admin/products', {
                 products: products,
-                count: count
+                count: c
             });
         });
-
     });
 });
 
