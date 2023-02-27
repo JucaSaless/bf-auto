@@ -12,16 +12,27 @@
   padding-top: 60px;
 }
 
+.text-header {
+  color: white;
+  display: inline-block;
+  font-weight: bold;
+  vertical-align: bottom;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
 .infos-head {
   color: white;
-  display: inline;
+  display: inline-flexbox;
   float: right;
+  text-align: right;
   margin-top: 3px;
 }
 
 .infos-footer {
   display: inline;
   float: right;
+  text-align: right;
 }
 
 .social a {
@@ -35,6 +46,10 @@
 img.pimage {
   width: 200px;
 }
+
+/* #map {
+  height: 100%;
+} */
 
 a.pa {
   display: inline-block;
@@ -73,7 +88,7 @@ table.alignmiddle td {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(255,255,255, .8);
+  background: rgba(255, 255, 255, 0.8);
   z-index: 2;
   display: none;
 }

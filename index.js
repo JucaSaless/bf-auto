@@ -110,11 +110,12 @@ require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('*', function(req,res,next) {
+app.get('*', function (req, res, next) {
     //res.locals.cart = req.session.cart;
     res.locals.user = req.user || null;
     next();
- });
+});
+
 
 // Set routers
 var usersRouter = require('./routes/users');

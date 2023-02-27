@@ -10,17 +10,25 @@
 
     <div class="infos-footer" >
       <h6>
+        Samuel (54) 998134-7604
           <a href="https://wa.me/+555481347604" target="_blank">
               <img alt="" style="width: 22px; margin: 2px;" src="/images/whatsapp.png" />
           </a>
-          Samuel (54) 998134-7604
       </h6>
       <h6>
+        Leandro (54) 99993-7056 
           <a href="https://wa.me/+555499937056" target="_blank">
               <img alt="" style="width: 22px; margin: 2px;" src="/images/whatsapp.png" /> 
           </a>
-          Leandro (54) 99993-7056 
       </h6>
+      <% if (!user) { %>
+      <h6>
+        Login
+        <a href="/users/login">
+          <img alt="" style="width: 22px; margin: 2px;" src="/images/login-icon.png" />
+        </a>
+      </h6>
+      <% } %>
     </div>
   </div>
 </div>
