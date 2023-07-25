@@ -1,5 +1,9 @@
+/* body {
+  background-image: url("/images/logo-metade.png");
+} */
+
 .img-logo {
-  width: 320px;
+  width: 360px;
   margin-top: 10px;
   margin-bottom: 10px;
 }

@@ -43,6 +43,8 @@ router.get('/add-product', isAdmin, function (req, res) {
 
 router.post('/add-product', function (req, res) {
 
+    console.log(req);
+
     var imageFile = "";
     if (req.files !== null && req.files.image !== "undefined") {
         console.log('entrou - ', req.files.image);
@@ -133,6 +135,8 @@ router.post('/add-product', function (req, res) {
 
 
 router.get('/edit-product/:id', isAdmin, function (req, res) {
+
+    console.log(req);
 
     var errors;
 
