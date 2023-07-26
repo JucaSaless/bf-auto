@@ -5,7 +5,7 @@
  */
 
 var app = require('../index');
-var debug = require('debug')('bf-auto:server');
+var debug = require('debug')('favaretto:server');
 var http = require('http');
 
 /**
